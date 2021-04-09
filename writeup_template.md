@@ -148,11 +148,7 @@ The algorithm looks the following way:
     - If the number of pixels you found in Step 4 are greater than your hyperparameter minpix, re-center our window (i.e. leftx_current or rightx_current) based on the mean position of these pixels.
 
 
-
-
-TODO
-
-![alt text][./final_pipeline.png]
+![alt text](./final_pipeline.png)
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
