@@ -122,7 +122,7 @@ Finally I have combined all thresholds into one combined expression
 combined[(gradx == 1) | ((mag_binary == 1) & (dir_binary == 1)) | (sbinary ==1 ) | (rbinary == 1)] = 1
    
 
-Once we apply the combined transformation to the final image we will get the following result
+Once we apply the combined transformation to the original image we will get the following result
 
 ![alt text](./writeup_images/color_gradient.png)
 
