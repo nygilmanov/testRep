@@ -134,8 +134,11 @@ I took a histogram along all the columns in the lower half of the image
 
 With this histogram we are adding up the pixel values along each column in the image. In our thresholded binary image, pixels are either 0 or 1, so the two most prominent peaks in this histogram will be good indicators of the x-position of the base of the lane lines. We can use that as a starting point for where to search for the lines. From that point, we can use a sliding window, placed around the line centers, to find and follow the lines up to the top of the frame.
 
+This process clearly explained here:
 
-Next we implement the following algorithm:
+https://youtu.be/siAMDK8C_x8
+
+The algorithm looks the following way:
 
     - Loop through each window in nwindows
     - Find the boundaries of our current window. This is based on a combination of the current window's starting point (leftx_current and rightx_current), as well as the margin you set in the hyperparameters.
