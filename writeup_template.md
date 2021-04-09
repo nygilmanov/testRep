@@ -60,6 +60,10 @@ First I defined  trapezoid in on the straight lines of the original image (befor
 For these purposes DrawLines.py library has been developed.
 It uses techniques for drawing straight lines developed in the first project
 
+![Undistorted](./writeup_images/get_trapezoid.png)
+
+
+
 The second step is to define 4 desired points on the image. 
 We know that lines are straight on the original image and expect rectangle after transforamtion
 Finally we get perspactive matrix and the matrix for the opposite transformation by using **cv2.getPerspectiveTransform**  method
