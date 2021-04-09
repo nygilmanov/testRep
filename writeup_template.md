@@ -85,7 +85,7 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 3. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate final binary image (thresholding steps at section **Step 3.Color and gradient transformations"** of the main notebook).
+I used a combination of color and gradient thresholds to generate final binary image (thresholding steps at section **Step 3. Gradient and color transformations"** of the main notebook).
 
 - We see that the gradients taken in both the x and the y directions detect the lane lines and pick up other edges. Taking the gradient in the x direction emphasizes edges closer to vertical. Alternatively, taking the gradient in the y direction emphasizes edges closer to horizontal.In our case we need to identify vertical lines. So one of the filters is the gradient by x axis
     
@@ -94,15 +94,13 @@ I used a combination of color and gradient thresholds to generate final binary i
 - In the case of lane lines, we're interested only in edges of a particular orientation. So now we will explore the direction, or orientation, of the gradient.
 
 
-    
-- in particulare saturation and red channel
 
 I have also explored thresholding individual RGB color channels. 
 I have checked  them side by side to see which ones do a better job of picking up the lane lines:
 
-R = image[:,:,0]
-G = image[:,:,1]
-B = image[:,:,2]
+    - R = image[:,:,0]
+    - G = image[:,:,1]
+    - B = image[:,:,2]
 
 Finally I ended up with red one
 
