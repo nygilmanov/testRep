@@ -87,6 +87,9 @@ I verified that my perspective transform was working as expected by drawing the 
 
 I used a combination of color and gradient thresholds to generate final binary image (thresholding steps at section **Step 3. Gradient and color transformations"** of the main notebook).
 
+
+ **Gradients**
+
 - We see that the gradients taken in both the x and the y directions detect the lane lines and pick up other edges. Taking the gradient in the x direction emphasizes edges closer to vertical. Alternatively, taking the gradient in the y direction emphasizes edges closer to horizontal.In our case we need to identify vertical lines. So one of the filters is the gradient by x axis
     
 - We also consider the magnitude, or absolute value, of the gradient by x and y axis,which is just the square root of the squares of the individual x and y gradients. For a gradient in both the x and y directions, the magnitude is the square root of the sum of the squares.    
@@ -94,31 +97,32 @@ I used a combination of color and gradient thresholds to generate final binary i
 - In the case of lane lines, we're interested only in edges of a particular orientation. So now we will explore the direction, or orientation, of the gradient.
 
 
+**Color space**
 
-I have also explored thresholding individual RGB color channels. 
-I have checked  them side by side to see which ones do a better job of picking up the lane lines:
+I have explored thresholding individual RGB color channels. 
+I have checked them side by side to see which ones do a better job of picking up the lane lines:
 
     - R = image[:,:,0]
     - G = image[:,:,1]
     - B = image[:,:,2]
 
-Finally I ended up with red one
+Finally i have applyed threshold to the red channel
 
 
-Final combination of all aspects
+As a seprate step I have explored thresholding from HLS perspective (hue, lightness, and saturation) and finally
+played with saturation
+Saturation is a measurement of colorfulness. So, as colors get lighter and closer to white, they have a lower saturation value, whereas colors that are the most intense, like a bright primary color
+
+    - H = hls[:,:,0]
+    - L = hls[:,:,1]
+    - S = hls[:,:,2]
+
+Finally I have combined all thresholds into one combined expression
 
 combined[(gradx == 1) | ((mag_binary == 1) & (dir_binary == 1)) | (sbinary ==1 ) | (rbinary == 1)] = 1
    
-Give the following result
 
-
-
-Here's an example of my output for this step.  (note: this is not actually from one of the test images)
-
-TODO
-
-
-
+Once we apply the combined transformation to the final image we will get the following result
 
 ![alt text](./writeup_images/color_gradient.png)
 
