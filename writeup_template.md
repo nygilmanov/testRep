@@ -34,7 +34,7 @@ The goals / steps of this project are the following:
 
 #### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image( TODO)
 
-The code for this step is contained in the section "Step1. Pipeline for distortion elimination" of the IPython notebook located in the root directory  "./P2_Advanced_LL_Detection.ipynb".
+The code for this step is contained in the section **"Step1. Pipeline for distortion elimination"** of the IPython notebook located in the root directory  **"./P2_Advanced_LL_Detection.ipynb"**.
 The methods for the camera calibration are located in Distortion.py library
 
 I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
@@ -49,16 +49,16 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 Number of functions have been developed to implement the perspective transform ( all the methods are located in Perspctive.py library)
 
-- save_PERSP_to_pickle_file - saves perspective matrices to the pickle file
-- load_PERSP_from_pickle_file - loads the perspective matrices from the pickle file
-- generates_perspective_pipeline - builds trapezoid on straight lines 
+- **save_PERSP_to_pickle_file** - saves perspective matrices to the pickle file
+- **load_PERSP_from_pickle_file** - loads the perspective matrices from the pickle file
+- **generates_perspective_pipeline** - builds trapezoid on straight lines 
+- **get_unwarped_image** - gets the original image and returns warped image 
 
 First I defined  trapezoid in on the straight lines of the original image (before perspective transform)
 For these purposes DrawLines.py library has been developed.
 It uses techniques for drawing straight lines developed in the first project
 
 ![Undistorted](./writeup_images/get_trapezoid.png)
-
 
 
 The second step is to define 4 desired points on the image. 
@@ -71,8 +71,6 @@ Finally we get perspactive matrix and the matrix for the opposite transformation
 
 These matrixes are saved in pickle file and will are used in the later stages of the project.
 
-
-get_unwarped_image - gets the original image and returns warped image 
 
 We can see the result of transforamation of the original image to to the warped one below
 
