@@ -69,31 +69,29 @@ dst =np.float32([[1000,0],[1000,700],[200,0],[200,700]])
 
 Finally we get perspactive matrix and the matrix for the opposite transformation by using **cv2.getPerspectiveTransform**  method
 
-These matrixes are saved in pickle file and will are used in the later stages of the project.
+These matrixes are saved in the pickle file and will are used in the later stages of the project.
 
 
-We can see the result of transforamation of the original image to to the warped one below
+We can see the result of transforamation of the original image to the warped one below
 
 ![Warped Image](./writeup_images/warped_image.png)
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
 
-
-
 #### 3. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at section TRANSFORMS of the main notebook).
+I used a combination of color and gradient thresholds to generate final binary image (thresholding steps at section TRANSFORMS of the main notebook).
 
 
-Sobel gradient by x and y axis with various parameters have been tested
+- Sobel gradient by x and y axis with various parameters have been tested
 
 Final combined image was defined assuming varuis aspects 
 such as
 
-Gradient by x axis
-Magnitude (TODO)
-Directions of the gradient
+- Gradient by x axis
+- Magnitude 
+- Directions of the gradient
 
 as well as colorspace thresholds 
 
@@ -115,7 +113,7 @@ TODO
 
 
 
-![alt text][image3]
+![alt text](./writeup_images/color_gradient.png)
 
 
 
