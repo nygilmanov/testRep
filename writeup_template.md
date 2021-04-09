@@ -124,22 +124,32 @@ combined[(gradx == 1) | ((mag_binary == 1) & (dir_binary == 1)) | (sbinary ==1 )
 
 Once we apply the combined transformation to the original image we will get the following result
 
-![alt text](./writeup_images/color_gradient.png)
-
-
+![Gradient and Color Transformation](./writeup_images/color_gradient.png)
 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+After applying calibration, thresholding, and a perspective transform to a road image, I  have got a binary image where the lane lines stand out clearly. 
+I took a histogram along all the columns in the lower half of the image
 
-I have built the histogram based on the warped image to identify the starting  positions of the left and right lane lines on the x axis
-
-TODO  After that a special algorithm makes number of steps by moving rectangle nnext and 
-
+With this histogram we are adding up the pixel values along each column in the image. In our thresholded binary image, pixels are either 0 or 1, so the two most prominent peaks in this histogram will be good indicators of the x-position of the base of the lane lines. We can use that as a starting point for where to search for the lines. From that point, we can use a sliding window, placed around the line centers, to find and follow the lines up to the top of the frame.
 
 
-![alt text][image5]
+Next we implement the following algorithm:
+
+    - Loop through each window in nwindows
+    - Find the boundaries of our current window. This is based on a combination of the current window's starting point (leftx_current and rightx_current), as well as the margin you set in the hyperparameters.
+    - Use cv2.rectangle to draw these window boundaries onto our visualization image out_img. This is required for the quiz, but you can skip this step in practice if you don't need to visualize where the windows are.
+    - Now that we know the boundaries of our window, find out which activated pixels from nonzeroy and nonzerox above actually fall into the window.
+    - Append these to our lists left_lane_inds and right_lane_inds.
+    - If the number of pixels you found in Step 4 are greater than your hyperparameter minpix, re-center our window (i.e. leftx_current or rightx_current) based on the mean position of these pixels.
+
+
+
+
+TODO
+
+![alt text][./final_pipeline.png]
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
