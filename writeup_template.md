@@ -49,20 +49,24 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 #### 2. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` 
 
-Number of function have been developed todo the perspective transform
+Number of functions have been developed to implement the perspective transform ( all the methods are located in Perspctive.py library)
 
-- save_PERSP_to_pickle_file
-- load_PERSP_from_pickle_file
-- generate_perspective_pipeline - builds trapezoid on straight lines using by using methods developed in the previous project
+- save_PERSP_to_pickle_file - saves perspective matrices to the pickle file
+- load_PERSP_from_pickle_file - loads the perspective matrices from the pickle file
+- generates_perspective_pipeline - builds trapezoid on straight lines 
 
-    For these purposes separate library have been developed and all its methods are locaed in DrawLines.py library
-    Once we get trapezoid on the original image we define 4 desired points.
-    
-    Finally we get perspactive matrix and the matrix for the opposite transformation by using  cv2.getPerspectiveTransform method
-    
-    These matrixes are saved in pickle file and will are used in the later stages of the project.
+First I defined  trapezoid in on the straight lines of the original image (before perspective transform)
+For these purposes DrawLines.py library has been developed.
+It uses techniques for drawing straight lines developed in the first project
+
+The second step is to generate
+
+
+
+Finally we get perspactive matrix and the matrix for the opposite transformation by using  cv2.getPerspectiveTransform method
+
+These matrixes are saved in pickle file and will are used in the later stages of the project.
 
 
 get_unwarped_image - gets the original image and returns warped image 
