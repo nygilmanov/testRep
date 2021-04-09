@@ -154,25 +154,21 @@ Now that we have found all our pixels belonging to each line through the sliding
 In the next frame of video we don't need to do a blind search again, but instead we can just search in a margin around the previous lane line position, like in the above image. The green shaded area shows where we searched for the lines this time. So, once we know where the lines are in one frame of video, we can do a highly targeted search for them in the next frame.
 
 
-The methods which implement the above mentioned approach are placed Cureves.py library and called in **"Step4. Final pipeline"** section 
+The methods which implement the above mentioned approach are placed  in **"Cureves.py"** library and called in **"Step4. Final pipeline"** section within **final_p** method
 
 ![alt text](./writeup_images/final_pipeline.png)
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
 
-
 ![alt text][image6]
 
----
 
 ### Pipeline (video)
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
 
 Here's a [https://youtu.be/Tjs3X5EyJ1o]
-
----
 
 ### Discussion
 
