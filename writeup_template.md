@@ -146,6 +146,14 @@ The algorithm looks the following way:
     - Now that we know the boundaries of our window, find out which activated pixels from nonzeroy and nonzerox above actually fall into the window.
     - Append these to our lists left_lane_inds and right_lane_inds.
     - If the number of pixels you found in Step 4 are greater than your hyperparameter minpix, re-center our window (i.e. leftx_current or rightx_current) based on the mean position of these pixels.
+    
+    
+Now that we have found all our pixels belonging to each line through the sliding window method, it's time to fit a polynomial to the line. First, we have a couple small steps to ready our pixels.
+
+
+In the next frame of video we don't need to do a blind search again, but instead we can just search in a margin around the previous lane line position, like in the above image. The green shaded area shows where we searched for the lines this time. So, once we know where the lines are in one frame of video, we can do a highly targeted search for them in the next frame.
+
+
 
 
 ![alt text](./writeup_images/final_pipeline.png)
