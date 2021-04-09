@@ -87,7 +87,7 @@ I verified that my perspective transform was working as expected by drawing the 
 
 I used a combination of color and gradient thresholds to generate final binary image (thresholding steps at section **Step 3.Color and gradient transformations"** of the main notebook).
 
-- We see that the gradients taken in both the x and the y directions detect the lane lines and pick up other edges. Taking the gradient in the x direction emphasizes edges closer to vertical. Alternatively, taking the gradient in the y direction emphasizes edges closer to horizontal.In our case we need to identify vertical lines. So one of the filter is the gradient by x axis
+- We see that the gradients taken in both the x and the y directions detect the lane lines and pick up other edges. Taking the gradient in the x direction emphasizes edges closer to vertical. Alternatively, taking the gradient in the y direction emphasizes edges closer to horizontal.In our case we need to identify vertical lines. So one of the filters is the gradient by x axis
     
 - We also consider the magnitude, or absolute value, of the gradient by x and y axis,which is just the square root of the squares of the individual x and y gradients. For a gradient in both the x and y directions, the magnitude is the square root of the sum of the squares.    
     
@@ -96,6 +96,15 @@ I used a combination of color and gradient thresholds to generate final binary i
 
     
 - in particulare saturation and red channel
+
+I have also explored thresholding individual RGB color channels. 
+I have checked  them side by side to see which ones do a better job of picking up the lane lines:
+
+R = image[:,:,0]
+G = image[:,:,1]
+B = image[:,:,2]
+
+Finally I ended up with red one
 
 
 Final combination of all aspects
