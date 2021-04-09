@@ -42,7 +42,7 @@ The methods for the camera calibration are located in Distortion.py library
 
 I start by preparing "object points", which will be the (x, y, z) coordinates of the chessboard corners in the world. Here I am assuming the chessboard is fixed on the (x, y) plane at z=0, such that the object points are the same for each calibration image.  Thus, `objp` is just a replicated array of coordinates, and `objpoints` will be appended with a copy of it every time I successfully detect all chessboard corners in a test image.  `imgpoints` will be appended with the (x, y) pixel position of each of the corners in the image plane with each successful chessboard detection.  
 
-I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
+I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the **cv2.calibrateCamera()** function.  I applied this distortion correction to the test image using the **cv2.undistort()** function and obtained this result: 
 
 ![Undistorted](./writeup_images/undistorted.png)
 
@@ -60,11 +60,9 @@ First I defined  trapezoid in on the straight lines of the original image (befor
 For these purposes DrawLines.py library has been developed.
 It uses techniques for drawing straight lines developed in the first project
 
-The second step is to generate
-
-
-
-Finally we get perspactive matrix and the matrix for the opposite transformation by using  cv2.getPerspectiveTransform method
+The second step is to define 4 desired points on the image. 
+We know that lines are straight on the original image and expect rectangle after transforamtion
+Finally we get perspactive matrix and the matrix for the opposite transformation by using **cv2.getPerspectiveTransform**  method
 
 These matrixes are saved in pickle file and will are used in the later stages of the project.
 
@@ -77,11 +75,7 @@ We can see the result of transforamation of the original image to to the warped 
 (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
 
 
-
-
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
-
-TODO
 
 ![Warped Image](./writeup_images/warped_image.png)
 
