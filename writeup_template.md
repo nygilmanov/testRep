@@ -66,6 +66,10 @@ It uses techniques for drawing straight lines developed in the first project
 
 The second step is to define 4 desired points on the image. 
 We know that lines are straight on the original image and expect rectangle after transforamtion
+
+dst =np.float32([[1000,0],[1000,700],[200,0],[200,700]])
+
+
 Finally we get perspactive matrix and the matrix for the opposite transformation by using **cv2.getPerspectiveTransform**  method
 
 These matrixes are saved in pickle file and will are used in the later stages of the project.
@@ -75,13 +79,11 @@ get_unwarped_image - gets the original image and returns warped image
 
 We can see the result of transforamation of the original image to to the warped one below
 
-
-(output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
-
+![Warped Image](./writeup_images/warped_image.png)
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![Warped Image](./writeup_images/warped_image.png)
+
 
 
 #### 3. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
