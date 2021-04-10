@@ -156,17 +156,41 @@ In the next frame of video we don't need to do a blind search again, but instead
 
 The methods which implement the above mentioned approach are placed  in **"Cureves.py"** library and called in **"Step4. Final pipeline"** section within **final_p** method
 
+
+Finally I have used the smoothing technique by taking average second order polinomial fit from the 6 mast images.
+This technique allowed to improve lane lined detection in the difficult areas.
+
+
 ![alt text](./writeup_images/final_pipeline.png)
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+
+**Radius**
 
 Previously I located the lane line pixels, used their x and y pixel positions to fit a second order polynomial curve described by the following formula
 
 f(y)=Ay^2+By+C
 
 
+Having this formula we get the formula for the raduis of the curve
+
 ![Radius formula](./writeup_images/Formula.png)
 
+
+The y values of the image increase from top to bottom, so if, for example, we want to measure the radius of curvature closest to the vehicle, we can evaluate the formula above at the y value corresponding to the bottom of your image, or in Python, at yvalue = image.shape[0].
+
+
+Finally we need to transform the radius values from the pixel space to the real world meters space.
+
+Let's say that our camera image has 720 relevant pixels in the y-dimension (remember, our image is perspective-transformed!), and we'll say roughly 700 relevant pixels in the x-dimension  Therefore, to convert from pixels to real-world meter measurements, we can use:
+
+    ym_per_pix = 30/720 # meters per pixel in y dimension
+    xm_per_pix = 3.7/700 # meters per pixel in x dimension
+    
+**Offset**
+We can assume the camera is mounted at the center of the car, such that the lane center is the midpoint at the bottom of the image between the two lines you've detected. The offset of the lane center from the center of the image (converted from pixels to meters) is our distance from the center of the lane.    
+    
+   
 
 ### Pipeline (video)
 
@@ -179,4 +203,13 @@ Here's a [https://youtu.be/Tjs3X5EyJ1o]
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+
+On the challenges videos curves are not idefined accurately.
+Here extra playing with color/gradient spaces could make the better job
+Alternative  image to image techniques  could also improve the situation (Sanity Check,Reset,Extra Smoothing techniques)
+
+
+
+
+
+
