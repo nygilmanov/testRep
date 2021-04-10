@@ -160,13 +160,18 @@ The methods which implement the above mentioned approach are placed  in **"Curev
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-**TODO**
-![alt text][image6]
+Previously I located the lane line pixels, used their x and y pixel positions to fit a second order polynomial curve described by the following formula
+
+f(y)=Ay^2+By+C
+
+
+![Radius formula](./writeup_images/Formula.png)
 
 
 ### Pipeline (video)
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+
 
 Here's a [https://youtu.be/Tjs3X5EyJ1o]
 
